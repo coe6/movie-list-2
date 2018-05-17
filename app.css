@@ -4,8 +4,12 @@ main {
     margin: 1rem auto;
   }
 
-  header {
+header {
     position: relative;
     margin: 1rem auto;
     text-align: center;
-  }
+}
+
+.movieName {
+    margin: 0 0.75rem
+}

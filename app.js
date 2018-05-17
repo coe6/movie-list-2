@@ -28,8 +28,10 @@ const app = {
             id: ++this.max,
         }
 
-        this.movies.push(movieItem)
-        this.list.appendChild(this.renderListItem(movieItem))
+        this.movies.unshift(movieItem)
+
+        const item = this.renderListItem(movieItem)
+        this.list.insertBefore(item, this.list.firstElementChild)
 
         f.reset()
     },
