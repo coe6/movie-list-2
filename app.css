@@ -1,0 +1,11 @@
+main {
+    width: 80%;
+    background-color: whitesmoke;
+    margin: 1rem auto;
+  }
+
+  header {
+    position: relative;
+    margin: 1rem auto;
+    text-align: center;
+  }
