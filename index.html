@@ -21,24 +21,66 @@
                     name="movieName"
                     autofocus
                     required>
+            <div class="input-genre">
+                <select name="genre" required>
+                    <option value="" selected disabled hidden>--Genre--</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Tragedy">Tragedy</option>
+                </select>
+            </div>
+
+            <div class="input-watch">
+                <select name="watch" required>
+                    <option value="" selected disabled hidden>--Status--</option>
+                    <option value="Want to See!">Want to See!</option>
+                    <option value="Have Seen!">Have Seen!</option>
+                </select>
+            </div>
+
             <div class="input-group-button">
                 <button
                     class="button"
                     type="submit"
                     >ADD</button>
-                </div>
-              </div>
+            </div>
+            </div>
             </form>
 
-        <ul id="movieList" class="no-bullet">
+        <div class="filter">
+            <form class="filterMovie" id="filterMovie">
+                <select name="filter">
+                        <option value="" selected disabled hidden>--Filter Results--</option>
+                        <option value="noFilter">--No Filter--</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Tragedy">Tragedy</option>
+                    </select>
+                    <div class="filter-group-button">
+                        <button
+                            class="button"
+                            type="submit"
+                            >FILTER</button>
+                        </div>
+        </form>
+        </div>
+
+        <ul id="movieList" class="no-bullet" class="movieList">
             <li class="template movie grid-x align-middle">
                 <span class="movieName auto cell"></span>
                 <span class="actions shrink cell">
-                    <button class="warning button">Favorite</button>
-                    <button class="alert button">Delete</button>
+                    <button type="button" class="fav warning button">★</button>
+                    <button type="button" class="button">⬆</button>
+                    <button type="button" class="button">⬇</button>
+                    <button type="button" class="delete alert button">Delete</button>
                 </span>
             </li>
         </ul>
+
      </main>
     
     <script src="app.js"></script>

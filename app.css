@@ -1,19 +1,42 @@
+@import 'https://fonts.googleapis.com/css?family=Bungee+Shade';
+
 main {
     width: 80%;
-    background-color: whitesmoke;
+    background-color: white;
     margin: 1rem auto;
   }
 
 header {
+    font-family: 'Bungee Shade', cursive, sans-serif;
+    background-color: rgb(175, 27, 27);
+    padding: 10px;
+    font-size: 60px;
+    color: white;
     position: relative;
     margin: 1rem auto;
-    text-align: center;
+    text-align: left;
 }
 
 .movieName {
     margin: 0 0.75rem
 }
 
+.movie:last-child {
+    border-bottom: 0;
+}
+
 .template {
     display: none;
+}
+
+ul.movieList {
+    margin: 0;
+}
+
+ul {
+    border: 1px dashed rgb(175, 27, 27);
+}
+
+.fav {
+    color: rgb(203, 174, 6)
 }
