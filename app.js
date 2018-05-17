@@ -3,6 +3,7 @@ const app = {
         this.movies = []
         this.max = 0
         this.list = document.querySelector(selectors.listSelector)
+        this.template = document.querySelector(selectors.templateSelector)
 
         document
             .querySelector(selectors.formSelector)
@@ -13,9 +14,10 @@ const app = {
     },
 
     renderListItem(movie) {
-        const item = document.createElement('li')
+        const item = this.template.cloneNode(true)
+        item.classList.remove('template')
         item.dataset.id = movie.id
-        item.textContent = movie.name
+        item.querySelector('.movieName').textContent = movie.name
 
         return item
     },
@@ -40,4 +42,5 @@ const app = {
 app.init({
     formSelector: '#movieInput',
     listSelector: '#movieList',
+    templateSelector: '.movie.template',
 })

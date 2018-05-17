@@ -13,3 +13,7 @@ header {
 .movieName {
     margin: 0 0.75rem
 }
+
+.template {
+    display: none;
+}
