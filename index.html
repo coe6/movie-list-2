@@ -51,6 +51,7 @@
 
         <div class="filter">
             <form class="filterMovie" id="filterMovie">
+                <div class="filterForm">
                 <select name="filter">
                         <option value="" selected disabled hidden>--Filter Results--</option>
                         <option value="noFilter">--No Filter--</option>
@@ -66,13 +67,14 @@
                             type="submit"
                             >FILTER</button>
                         </div>
+                </div>
         </form>
         </div>
 
         <ul id="movieList" class="no-bullet" class="movieList">
             <li class="template movie grid-x align-middle">
                 <span class="movieName auto cell"></span>
-                <span class="actions shrink cell">
+                <span class="actions button-group shrink cell">
                     <button type="button" class="fav warning button">★</button>
                     <button type="button" class="button">⬆</button>
                     <button type="button" class="button">⬇</button>

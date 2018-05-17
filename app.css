@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Bungee+Shade';
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
 
 main {
     width: 80%;
@@ -6,15 +6,24 @@ main {
     margin: 1rem auto;
   }
 
-header {
-    font-family: 'Bungee Shade', cursive, sans-serif;
-    background-color: rgb(175, 27, 27);
+h1 {
+    font-family: 'Bungee Shade', cursive;
+    background-color: rgb(152, 17, 17);
     padding: 10px;
     font-size: 60px;
     color: white;
     position: relative;
     margin: 1rem auto;
     text-align: left;
+}
+
+.movie {
+    padding: 10px;
+}
+
+.actions.button-group {
+    white-space: nowrap;
+    margin-bottom: 0;
 }
 
 .movieName {
@@ -34,7 +43,7 @@ ul.movieList {
 }
 
 ul {
-    border: 1px dashed rgb(175, 27, 27);
+    border: 1px solid rgb(152, 17, 17);
 }
 
 .fav {

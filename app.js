@@ -59,6 +59,7 @@ const app = {
         } else {
             listItem.classList.remove('fav')
         }
+        console.log(movie)
     },
 
     deleteItem(movie, ev) {
