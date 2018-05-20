@@ -4,12 +4,20 @@ const app = {
         this.max = 0
         this.list = document.querySelector(selectors.listSelector)
         this.template = document.querySelector(selectors.templateSelector)
+        this.filter = document.querySelector(selectors.filterSelector)
 
         document
             .querySelector(selectors.formSelector)
             .addEventListener('submit', (ev) => {
                 ev.preventDefault()
                 this.handleSubmit(ev)
+            })
+
+        document
+            .querySelector(selectors.filterSelector)
+            .addEventListener('submit', ev => {
+                ev.preventDefault()
+                this.filterList(ev)
             })
     },
 
@@ -35,6 +43,10 @@ const app = {
             .querySelector('button.moveDown')
             .addEventListener('click', this.moveDown.bind(this, movie))
 
+        item
+            .querySelector('button.edit')
+            .addEventListener('click', this.editContent.bind(movie, this))
+
         return item
     },
 
@@ -58,7 +70,6 @@ const app = {
     },
 
     favItem(movie, ev) {
-        console.log(this.movies)
         const listItem = ev.target.closest('.movie')
         movie.fav = !movie.fav
 
@@ -111,46 +122,34 @@ const app = {
         }
     },
 
+    editContent(movie, ev) {
+
+    },
+
     filterList(ev) {
-        ev.preventDefault()
+        const filter = this.filter.filter.value
+        console.log(filter)
 
-    const filter = filterForm.filter.value
-    const movies = document.querySelector('#movies')
-
-    while(movies.hasChildNodes()) {
-        movies.removeChild(movies.lastChild)
-    }
-
-    if(filter === 'noFilter') {
-        const list = document.createElement('ul')
-
-        for(var i = 0; i < movieArray.length; i++) {
-            Object.keys(movieArray[i]).map(value => {
-                const item = renderListItem(value, movieArray[i][value])
-                list.appendChild(item)
-                })
-            createDeleteBttn(list)
+        while(this.list.hasChildNodes()) {
+            this.list.removeChild(this.list.lastChild)
         }
 
-        movies.appendChild(list)
-        return
-    } else {
-        const list = document.createElement('ul')
+        if(filter === 'noFilter') {
+            for(var i = this.movies.length-1; i >= 0; i--) {
+                const item = this.renderListItem(this.movies[i])
+                this.list.insertBefore(item, this.list.firstElementChild)
+            }
+            return
+        } else {
+            const list = document.createElement('ul')
 
-        for(var i = 0; i < movieArray.length; i++) {
-            if(filter === movieArray[i].Genre) {
-                Object.keys(movieArray[i]).map(value => {
-                    const item = renderListItem(value, movieArray[i][value])
-                    list.appendChild(item)
-                })
-
-                createDeleteBttn(list)
+            for(var i = 0; i < this.movies.length; i++) {
+                if(filter === this.movies[i].genre) {
+                    const item = this.renderListItem(this.movies[i])
+                    this.list.insertBefore(item, this.list.firstElementChild)
+                }
             }
         }
-
-        movies.appendChild(list)
-    }
-
     },
 }
 
@@ -158,11 +157,10 @@ app.init({
     formSelector: '#movieInput',
     listSelector: '#movieList',
     templateSelector: '.movie.template',
+    filterSelector: '#filterMovie',
 })
 
 
 
 //homework:
-    //add buttons to move the movie up and down the list
-    //make the buttons also change their place in the array
     //allow users to edit the names of the movies in the list after they are added (span content editable)

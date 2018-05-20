@@ -9,17 +9,13 @@
 <body>
 
     <header>
-        <h1>Movie List</h1>
-        <h6>Keep track of all the movies you watched or plan to watch!!</h6>
+        <h1>Movie List <span>Keep track of all the movies you have watched or plan to see!</span></h1>
     </header>
 
     <main>
         <form id="movieInput">
           <div class="input-group">
-            <input type="text"
-                    class="input-group-field"
-                    placeholder="Enter a movie"
-                    name="movieName"
+            <input type="text" class="input-group-field" placeholder="Enter a movie" name="movieName"
                     autofocus
                     required>
             <div class="input-genre">
@@ -42,10 +38,7 @@
             </div>
 
             <div class="input-group-button">
-                <button
-                    class="button"
-                    type="submit"
-                    >ADD</button>
+                <button class="button" type="submit">ADD</button>
             </div>
             </div>
             </form>
@@ -53,23 +46,22 @@
         <div class="filter">
             <form class="filterMovie" id="filterMovie">
                 <div class="filterForm">
-                <select name="filter">
-                        <option value="" selected disabled hidden>--Filter Results--</option>
-                        <option value="noFilter">--No Filter--</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Romance">Romance</option>
-                        <option value="Horror">Horror</option>
-                        <option value="Thriller">Thriller</option>
-                        <option value="Tragedy">Tragedy</option>
-                    </select>
+                    <div class="large-4 column">
+                        <select name="filter">
+                            <option value="" selected disabled hidden>--Filter Results--</option>
+                            <option value="noFilter">--No Filter--</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Tragedy">Tragedy</option>
+                        </select>
+                    </div>
                     <div class="filter-group-button">
-                        <button
-                            class="button"
-                            type="submit"
-                            >FILTER</button>
-                        </div>
+                        <button class="button" type="submit">FILTER</button>
+                    </div>
                 </div>
-        </form>
+            </form>
         </div>
 
         <ul id="movieList" class="no-bullet" class="movieList">
@@ -77,6 +69,7 @@
                 <span class="movieName auto cell"></span>
                 <span class="actions button-group shrink cell">
                     <button type="button" class="fav warning button">★</button>
+                    <button type="button" class="edit info button">✎</button>
                     <button type="button" class="moveUp button">⬆</button>
                     <button type="button" class="moveDown button">⬇</button>
                     <button type="button" class="delete alert button">Delete</button>

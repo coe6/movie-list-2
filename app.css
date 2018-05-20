@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
+@import url('https://fonts.googleapis.com/css?family=Mouse+Memoirs');
 
 main {
     width: 80%;
@@ -10,11 +11,17 @@ h1 {
     font-family: 'Bungee Shade', cursive;
     background-color: rgb(152, 17, 17);
     padding: 10px;
-    font-size: 60px;
+    font-size: 64px;
     color: white;
     position: relative;
     margin: 1rem auto;
     text-align: left;
+}
+
+h1 span {
+    font-size: 18px;
+    font-family: 'Mouse Memoirs', sans-serif;
+    text-align: center;
 }
 
 .movie {
