@@ -11,7 +11,6 @@ const app = {
                 ev.preventDefault()
                 this.handleSubmit(ev)
             })
-
     },
 
     renderListItem(movie) {
@@ -27,6 +26,14 @@ const app = {
         item
             .querySelector('.button.fav')
             .addEventListener('click', this.favItem.bind(this, movie))
+
+        item
+            .querySelector('.button.moveUp')
+            .addEventListener('click', this.moveUp.bind(this, movie))
+
+        item
+            .querySelector('button.moveDown')
+            .addEventListener('click', this.moveDown.bind(this, movie))
 
         return item
     },
@@ -51,6 +58,7 @@ const app = {
     },
 
     favItem(movie, ev) {
+        console.log(this.movies)
         const listItem = ev.target.closest('.movie')
         movie.fav = !movie.fav
 
@@ -59,7 +67,6 @@ const app = {
         } else {
             listItem.classList.remove('fav')
         }
-        console.log(movie)
     },
 
     deleteItem(movie, ev) {
@@ -71,6 +78,36 @@ const app = {
                 this.movies.splice(i, 1)
                 break
             }
+        }
+    },
+
+    moveUp(movie, ev) {
+        const pos = this.movies.indexOf(movie)
+        this.movies.splice(pos, 1)
+        this.movies.splice(pos-1, 0, movie)
+
+        while(this.list.hasChildNodes()) {
+            this.list.removeChild(this.list.lastChild)
+        }
+
+        for(var i = this.movies.length-1; i >= 0; i--) {
+            const item = this.renderListItem(this.movies[i])
+            this.list.insertBefore(item, this.list.firstElementChild)
+        }
+    },
+
+    moveDown(movie, ev) {
+        const pos = this.movies.indexOf(movie)
+        this.movies.splice(pos, 1)
+        this.movies.splice(pos+1, 0, movie)
+
+        while(this.list.hasChildNodes()) {
+            this.list.removeChild(this.list.lastChild)
+        }
+
+        for(var i = this.movies.length-1; i >= 0; i--) {
+            const item = this.renderListItem(this.movies[i])
+            this.list.insertBefore(item, this.list.firstElementChild)
         }
     },
 
@@ -126,7 +163,6 @@ app.init({
 
 
 //homework:
-    //make fav button change the style of the list item in some way
     //add buttons to move the movie up and down the list
     //make the buttons also change their place in the array
     //allow users to edit the names of the movies in the list after they are added (span content editable)
