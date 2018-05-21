@@ -42,7 +42,7 @@ class App {
             .addEventListener('click', this.changeStatus.bind(this, movie))
 
         item
-            .querySelector('.button.alert')
+            .querySelector('.button.delete')
             .addEventListener('click', this.deleteItem.bind(this, movie))
 
         item
@@ -129,14 +129,19 @@ class App {
     }
 
     editContent(movie, ev) {
-        const item = ev.target.closest('.movie')
+        const btn = ev.target
+        const item = btn.closest('.movie')
         const editName = item.querySelector('.movieName')
 
         if(editName.isContentEditable) {
             editName.contentEditable = false
             movie.name = editName.textContent
+            btn.textContent = '✏'
+            btn.classList.remove('success')
         } else {
             editName.contentEditable = true
+            btn.textContent = '✔'
+            btn.classList.add('success')
             editName.focus()
         }
     }
@@ -151,7 +156,6 @@ class App {
             item.querySelector('.button.status').textContent= `Watched!`
             movie.status = 'Have Seen!'
         }
-        console.log(this.movies)
     }
 
     // filterList(ev) {
