@@ -61,7 +61,7 @@ class App {
 
         item
             .querySelector('button.edit')
-            .addEventListener('click', this.editContent.bind(movie, this))
+            .addEventListener('click', this.editContent.bind(this, movie))
 
         return item
     }
