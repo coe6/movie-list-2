@@ -28,6 +28,10 @@ const app = {
         const text = `${movie.name} (${movie.genre} / ${movie.status})`
         item.querySelector('.movieName').textContent = text
 
+        if(movie.fav) {
+            item.classList.add('fav')
+        }
+
         item
             .querySelector('.button.alert')
             .addEventListener('click', this.deleteItem.bind(this, movie))
