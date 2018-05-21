@@ -27,6 +27,7 @@
                             <option value="" selected disabled hidden>--Genre--</option>
                             <option value="Comedy">Comedy</option>
                             <option value="Romance">Romance</option>
+                            <option value="Action">Action</option>
                             <option value="Horror">Horror</option>
                             <option value="Thriller">Thriller</option>
                             <option value="Tragedy">Tragedy</option>
@@ -51,6 +52,7 @@
         <div class="filter">
             <button class="tablink" onclick="filterList(event, 'Comedy')">Comedy</button>
             <button class="tablink" onclick="filterList(event, 'Romance')">Romance</button>
+            <button class="tablink" onclick="filterList(event, 'Action')">Action</button>
             <button class="tablink" onclick="filterList(event, 'Horror')">Horror</button>
             <button class="tablink" onclick="filterList(event, 'Thriller')">Thriller</button>
             <button class="tablink" onclick="filterList(event, 'Tragedy')">Tragedy</button>
@@ -77,6 +79,7 @@
 
         <div class="tabcontent" id="Comedy" style="display: none"></div>
         <div class="tabcontent" id="Romance" style="display: none"></div>
+        <div class="tabcontent" id="Action" style="display: none"></div>
         <div class="tabcontent" id="Horror" style="display: none"></div>
         <div class="tabcontent" id="Thriller" style="display: none"></div>
         <div class="tabcontent" id="Tragedy" style="display: none"></div>
@@ -87,6 +90,7 @@
                 <span class="movieName auto cell"></span>
                 <span class="actions button-group shrink cell">
                     <button type="button" class="edit info button">✎</button>
+                    <button type="button" class="status success button"></button>
                     <button type="button" class="fav warning button">★</button>
                     <button type="button" class="moveUp button">⬆</button>
                     <button type="button" class="moveDown button">⬇</button>

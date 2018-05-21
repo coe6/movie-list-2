@@ -1,5 +1,5 @@
-const app = {
-    init(selectors) {
+class App {
+    constructor(selectors) {
         this.movies = []
         this.max = 0
         this.list = document.querySelector(selectors.listSelector)
@@ -19,7 +19,7 @@ const app = {
         //         ev.preventDefault()
         //         this.filterList(ev)
         //     })
-    },
+    }
 
     renderListItem(movie) {
         const item = this.template.cloneNode(true)
@@ -27,9 +27,19 @@ const app = {
         item.dataset.id = movie.id
         item.querySelector('.movieName').textContent = movie.name
 
+        if(movie.status === `Have Seen!`) {
+            item.querySelector('.button.status').textContent = `Watched!`
+        } else if(movie.status === `Want to See!`) {
+            item.querySelector('.button.status').textContent= `Planning!`
+        }
+
         if(movie.fav) {
             item.classList.add('fav')
         }
+
+        item
+            .querySelector('.button.status')
+            .addEventListener('click', this.changeStatus.bind(this, movie))
 
         item
             .querySelector('.button.alert')
@@ -52,7 +62,7 @@ const app = {
             .addEventListener('click', this.editContent.bind(movie, this))
 
         return item
-    },
+    }
 
     handleSubmit(ev) {
         const f = ev.target
@@ -71,7 +81,7 @@ const app = {
         this.list.insertBefore(item, this.list.firstElementChild)
 
         f.reset()
-    },
+    }
 
     favItem(movie, ev) {
         const listItem = ev.target.closest('.movie')
@@ -82,19 +92,15 @@ const app = {
         } else {
             listItem.classList.remove('fav')
         }
-    },
+    }
 
     deleteItem(movie, ev) {
         const listItem = ev.target.closest('.movie')
         listItem.remove()
 
-        for(let i = 0; i < this.movies.length; i++) {
-            if(listItem.dataset.id === this.movies[i].id.toString()) {
-                this.movies.splice(i, 1)
-                break
-            }
-        }
-    },
+        const index = this.movies.indexOf(movie)
+        this.movies.splice(index, 1)
+    }
 
     moveUp(movie, ev) {
         const pos = this.movies.indexOf(movie)
@@ -109,7 +115,7 @@ const app = {
             const item = this.renderListItem(this.movies[i])
             this.list.insertBefore(item, this.list.firstElementChild)
         }
-    },
+    }
 
     moveDown(movie, ev) {
         const pos = this.movies.indexOf(movie)
@@ -124,7 +130,7 @@ const app = {
             const item = this.renderListItem(this.movies[i])
             this.list.insertBefore(item, this.list.firstElementChild)
         }
-    },
+    }
 
     editContent(movie, ev) {
         const item = ev.target.closest('.movie')
@@ -137,7 +143,19 @@ const app = {
             editName.contentEditable = true
             editName.focus()
         }
-    },
+    }
+
+    changeStatus(movie, ev) {
+        const item = this.template.cloneNode(true)
+
+        if(movie.status === `Have Seen!`) {
+            item.querySelector('.button.status').textContent = `Planning!`
+            movie.status = 'Want to See!'
+        } else if(movie.status === `Want to See!`) {
+            item.querySelector('.button.status').textContent= `Watched!`
+            movie.status = 'Have Seen!'
+        }
+    }
 
     // filterList(ev) {
     //     const filter = this.filter.filter.value
@@ -164,7 +182,7 @@ const app = {
 
 }
 
-app.init({
+const app = new App({
     formSelector: '#movieInput',
     listSelector: '#movieList',
     templateSelector: '.movie.template',
