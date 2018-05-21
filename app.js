@@ -124,7 +124,16 @@ const app = {
     },
 
     editContent(movie, ev) {
+        const item = ev.target.closest('.movie')
+        const editName = item.querySelector('.movieName')
 
+        if(editName.isContentEditable) {
+            editName.contentEditable = false
+            movie.name = editName.textContent
+        } else {
+            editName.contentEditable = true
+            editName.focus()
+        }
     },
 
     // filterList(ev) {

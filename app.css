@@ -79,6 +79,14 @@ h6 {
     border-bottom: 0;
 }
 
+.add {
+    background-color: rgb(152, 17, 17);
+}
+
+.add:hover {
+    background-color: rgb(90, 10, 10);
+}
+
 .template {
     display: none;
 }
