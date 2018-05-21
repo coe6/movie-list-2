@@ -25,7 +25,9 @@ class App {
         const item = this.template.cloneNode(true)
         item.classList.remove('template')
         item.dataset.id = movie.id
-        item.querySelector('.movieName').textContent = movie.name
+        const nameSpan = item.querySelector('.movieName')
+        nameSpan.textContent = movie.name
+        nameSpan.addEventListener('keypress', this.saveOnEnter.bind(this, movie))
 
         if(movie.status === `Have Seen!`) {
             item.querySelector('.button.status').textContent = `Watched!`
@@ -129,20 +131,27 @@ class App {
     }
 
     editContent(movie, ev) {
-        const btn = ev.target
-        const item = btn.closest('.movie')
+        const item = ev.target.closest('.movie')
+        const btn = item.querySelector('.edit.button')
         const editName = item.querySelector('.movieName')
 
         if(editName.isContentEditable) {
             editName.contentEditable = false
-            movie.name = editName.textContent
             btn.textContent = '✏'
             btn.classList.remove('success')
+
+            movie.name = editName.textContent
         } else {
             editName.contentEditable = true
             btn.textContent = '✔'
             btn.classList.add('success')
             editName.focus()
+        }
+    }
+
+    saveOnEnter(movie, ev) {
+        if(ev.key === 'Enter') {
+            this.editContent(movie, ev)
         }
     }
 
