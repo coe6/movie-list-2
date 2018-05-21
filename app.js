@@ -128,7 +128,6 @@ const app = {
 
     filterList(ev) {
         const filter = this.filter.filter.value
-        console.log(filter)
 
         while(this.list.hasChildNodes()) {
             this.list.removeChild(this.list.lastChild)
@@ -151,6 +150,8 @@ const app = {
             }
         }
     },
+
+    
 }
 
 app.init({

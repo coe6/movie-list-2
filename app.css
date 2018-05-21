@@ -1,27 +1,40 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
 @import url('https://fonts.googleapis.com/css?family=Mouse+Memoirs');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline');
+
+body {
+    background: url(popcorn.png) no-repeat center center fixed;
+}
 
 main {
     width: 80%;
-    background-color: white;
+    background-color:white;
     margin: 1rem auto;
   }
 
 h1 {
-    font-family: 'Bungee Shade', cursive;
-    background-color: rgb(152, 17, 17);
+    font-family: 'Bungee Inline', cursive;
+    color: rgb(152, 17, 17);
     padding: 10px;
+    padding-bottom: 0px;
     font-size: 64px;
-    color: white;
     position: relative;
     margin: 1rem auto;
+    margin-left: 7rem;
+    margin-bottom: 0;
     text-align: left;
 }
 
-h1 span {
+h6 {
     font-size: 18px;
+    padding: 10px;
+    padding-top: 0px;
     font-family: 'Mouse Memoirs', sans-serif;
-    text-align: center;
+    position: relative;
+    color: black;
+    margin: 0 auto;
+    margin-left: 7rem;
+    text-align: left;
 }
 
 .movie {
