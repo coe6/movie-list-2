@@ -50,6 +50,31 @@ h6 {
     margin: 0 0.75rem
 }
 
+.filter {
+    overflow: hidden;
+    border: 0.5px solid rgb(152, 17, 17);
+    background-color: white;
+}
+
+.filter button {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 16px 18px;
+    transition: 0.3s;
+}
+
+.filter button:hover {
+    background-color: rgb(152, 17, 17);
+    color: white;
+}
+
+.filter button.active{
+    background-color: rgb(152, 17, 17);
+    color: white;
+}
+
 .movie:last-child {
     border-bottom: 0;
 }

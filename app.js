@@ -13,19 +13,20 @@ const app = {
                 this.handleSubmit(ev)
             })
 
-        document
-            .querySelector(selectors.filterSelector)
-            .addEventListener('submit', ev => {
-                ev.preventDefault()
-                this.filterList(ev)
-            })
+        // document
+        //     .querySelector(selectors.filterSelector)
+        //     .addEventListener('submit', ev => {
+        //         ev.preventDefault()
+        //         this.filterList(ev)
+        //     })
     },
 
     renderListItem(movie) {
         const item = this.template.cloneNode(true)
         item.classList.remove('template')
         item.dataset.id = movie.id
-        item.querySelector('.movieName').textContent = movie.name
+        const text = `${movie.name} (${movie.genre} / ${movie.status})`
+        item.querySelector('.movieName').textContent = text
 
         item
             .querySelector('.button.alert')
@@ -126,32 +127,29 @@ const app = {
 
     },
 
-    filterList(ev) {
-        const filter = this.filter.filter.value
+    // filterList(ev) {
+    //     const filter = this.filter.filter.value
+    //     while(this.list.hasChildNodes()) {
+    //         this.list.removeChild(this.list.lastChild)
+    //     }
+    //     if(filter === 'noFilter') {
+    //         for(var i = this.movies.length-1; i >= 0; i--) {
+    //             const item = this.renderListItem(this.movies[i])
+    //             this.list.insertBefore(item, this.list.firstElementChild)
+    //         }
+    //         return
+    //     } else {
+    //         const list = document.createElement('ul')
+    //         for(var i = 0; i < this.movies.length; i++) {
+    //             if(filter === this.movies[i].genre) {
+    //                 const item = this.renderListItem(this.movies[i])
+    //                 this.list.insertBefore(item, this.list.firstElementChild)
+    //             }
+    //         }
+    //     }
+    // },
 
-        while(this.list.hasChildNodes()) {
-            this.list.removeChild(this.list.lastChild)
-        }
 
-        if(filter === 'noFilter') {
-            for(var i = this.movies.length-1; i >= 0; i--) {
-                const item = this.renderListItem(this.movies[i])
-                this.list.insertBefore(item, this.list.firstElementChild)
-            }
-            return
-        } else {
-            const list = document.createElement('ul')
-
-            for(var i = 0; i < this.movies.length; i++) {
-                if(filter === this.movies[i].genre) {
-                    const item = this.renderListItem(this.movies[i])
-                    this.list.insertBefore(item, this.list.firstElementChild)
-                }
-            }
-        }
-    },
-
-    
 }
 
 app.init({
@@ -160,6 +158,41 @@ app.init({
     templateSelector: '.movie.template',
     filterSelector: '#filterMovie',
 })
+
+document.getElementById("defaultOpen").click()
+
+function filterList(ev, value) {
+        const filter = value
+
+        while(app.list.hasChildNodes()) {
+            app.list.removeChild(app.list.lastChild)
+        }
+
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        if(filter === 'noFilter') {
+            for(var i = app.movies.length-1; i >= 0; i--) {
+                const item = app.renderListItem(app.movies[i])
+                app.list.insertBefore(item, app.list.firstElementChild)
+            }
+
+            ev.currentTarget.className += " active"
+            return
+        } else {
+            const list = document.createElement('ul')
+            for(var i = 0; i < app.movies.length; i++) {
+                if(filter === app.movies[i].genre) {
+                    const item = app.renderListItem(app.movies[i])
+                    app.list.insertBefore(item, app.list.firstElementChild)
+                }
+            }
+        }
+
+        ev.currentTarget.className += " active"
+}
 
 
 
