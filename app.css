@@ -38,7 +38,7 @@ h6 {
 }
 
 .movie {
-    padding: 10px;
+    padding: 5px;
 }
 
 .actions.button-group {
@@ -99,6 +99,6 @@ ul {
     border: 1px solid rgb(152, 17, 17);
 }
 
-.fav {
-    color: rgb(178, 152, 3);
+.movie.fav {
+    background-color: rgb(255, 224, 113);
 }

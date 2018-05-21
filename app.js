@@ -87,11 +87,7 @@ class App {
         const listItem = ev.target.closest('.movie')
         movie.fav = !movie.fav
 
-        if(movie.fav) {
-            listItem.classList.add('fav')
-        } else {
-            listItem.classList.remove('fav')
-        }
+        listItem.classList.toggle('fav')
     }
 
     deleteItem(movie, ev) {
@@ -146,7 +142,7 @@ class App {
     }
 
     changeStatus(movie, ev) {
-        const item = this.template.cloneNode(true)
+        const item = ev.target.closest('.movie')
 
         if(movie.status === `Have Seen!`) {
             item.querySelector('.button.status').textContent = `Planning!`
@@ -155,6 +151,7 @@ class App {
             item.querySelector('.button.status').textContent= `Watched!`
             movie.status = 'Have Seen!'
         }
+        console.log(this.movies)
     }
 
     // filterList(ev) {
