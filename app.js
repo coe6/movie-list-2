@@ -25,8 +25,7 @@ const app = {
         const item = this.template.cloneNode(true)
         item.classList.remove('template')
         item.dataset.id = movie.id
-        const text = `${movie.name} (${movie.genre} / ${movie.status})`
-        item.querySelector('.movieName').textContent = text
+        item.querySelector('.movieName').textContent = movie.name
 
         if(movie.fav) {
             item.classList.add('fav')
