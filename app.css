@@ -102,3 +102,10 @@ ul {
 .movie.fav {
     color: goldenrod;
 }
+
+.movie:first-child .moveUp,
+.movie:last-child .moveDown {
+    background-color: #ddd;
+    color: #eee;
+    cursor: not-allowed;
+}
